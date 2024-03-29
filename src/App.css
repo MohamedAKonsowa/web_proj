@@ -1,0 +1,255 @@
+
+.test1{
+    margin-top: 10%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.Search {
+    display: grid;
+    grid-template-columns: 20% auto; /* 20% for SearchAside, rest for Products */
+    gap: 20px; /* Adjust gap between SearchAside and Products */
+}
+.SearchAside {
+    grid-column: 1 / 2; /* Span the first column */
+
+}
+.Products {
+    grid-column: 2 / -1; /* Span from the second column to the last column */
+}
+.test {
+    height: 100%;
+    width: 100%;
+    border: 2px solid black;
+    padding: 2%;
+}
+.Bar {
+    width: 98%;
+}
+.product-holder {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns with equal width */
+    gap: 20px; /* Adjust gap between products */
+}
+
+.product {
+    /* Optional: Add styling for each product */
+    text-align: center;
+}
+
+.product img {
+    max-width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.container {
+    display: flex;
+    border-radius: 15px;
+    background-color: #F0FFFF;
+    margin: 3%;
+    border: none;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Adjust values for a deeper shadow */
+
+}
+
+
+
+
+.item {
+    flex: 1;
+    padding: 20px;
+    border: none;
+    border-radius: 15px; /* Adjust the value to control the roundness */
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adjust values for shadow depth and spread */
+    width: 50%;
+    height: 75%;
+    margin-left: 2%;
+    background-color: white;
+    overflow: auto;
+    margin-top: 1%;
+
+}
+#products{
+    margin-bottom: 15%;
+}
+#shippingDiv {
+    height: 20%;
+}
+#orders {
+    margin-right: 2%;
+}
+.item_inbox img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;;
+}
+.item_inbox{
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.item-content {
+    display: flex;
+    align-items: center;
+}
+
+.shopping-cart {
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.shopping-cart h2 {
+    margin-bottom: 20px;
+}
+
+.items {
+    border: none;
+    padding: 10px;
+
+}
+
+.items ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.items li {
+    margin-bottom: 10px;
+}
+
+.product-list {
+    margin-top: 20px;
+}
+
+.product-list button {
+    margin-right: 10px;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.product-list button:hover {
+    background-color: #0056b3;
+}
+.remove button{
+    margin-right: 10px;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+
+.productDescription {
+    margin-top: 2%;
+    display: grid;
+    grid-template-columns: auto 1fr; /* Image takes the whole left column, text takes the right column */
+    gap: 20px; /* Adjust the gap between image and text */
+}
+
+.ProductDescription-image {
+    max-width: 100%; /* Ensure the image doesn't exceed its container */
+
+}
+
+.productDescription-text{
+    text-align: center;
+    margin: 0; /* Remove default margin */
+}
+
+.order-image{
+    width: 100%;
+    height: 100%;
+}
+.order-products{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+

@@ -1,0 +1,14 @@
+.product-search-screen{
+
+}
+.search-side{
+    width: 25%;
+}
+
+
+.main-container{
+    width: 80%;
+    margin: 30px auto;
+    display: flex;
+
+}

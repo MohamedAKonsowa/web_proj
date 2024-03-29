@@ -9,6 +9,7 @@
 }
 .SearchAside {
     grid-column: 1 / 2; /* Span the first column */
+   background-color: #0056b3;
 
 }
 .Products {

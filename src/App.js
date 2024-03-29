@@ -1,8 +1,8 @@
     import React, { useState } from 'react';
     import TopSection from './TopSection';
     import HomePage from './HomePage';
-    import downloadImage from 'C:\\Users\\mkonm\\WebstormProjects\\web_proj\\src\\hoddie.jpg';
-    import downloadImage2 from 'C:\\Users\\mkonm\\WebstormProjects\\web_proj\\src\\OIP.jpg';
+    import downloadImage from './hoddie.jpg';
+    import downloadImage2 from './OIP.jpg';
 
     import SearchPage from "./SearchPage";
     import Cart from "./Cart";

@@ -2,75 +2,6 @@
 .test1{
     margin-top: 10%;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .Search {
     display: grid;
     grid-template-columns: 20% auto; /* 20% for SearchAside, rest for Products */
@@ -106,19 +37,6 @@
 .product img {
     max-width: 100%;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 .container {
     display: flex;
     border-radius: 15px;

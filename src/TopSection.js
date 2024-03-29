@@ -1,7 +1,7 @@
 // TopSection.js
 import React from "react";
 import './Nav.css'
-import titleImage from "C:\\Users\\mkonm\\WebstormProjects\\web_proj\\src\\WebLogo.png";
+import titleImage from "./WebLogo.png";
 export default function TopSection({ toggleSections, toggleHomeSearchSections, toggleCartSection }) {
     const handleSearchButtonClick = () => {
         toggleSections(true); // Show both search and product sections

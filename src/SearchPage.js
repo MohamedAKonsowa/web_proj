@@ -20,7 +20,7 @@ const SearchPage = ({
     });
     console.log(selectedTypes)
     return (
-        <div className="main-container">
+        <div className="mainsearch-container">
             {showSearchSection && <SearchSection setSelectedTypes={setSelectedTypes} setSelectedPrice={setSelectedPrice}/>}
             {showProductSection && (
                 <div className={"product-search-screen"}>

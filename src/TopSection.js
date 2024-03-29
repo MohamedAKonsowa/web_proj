@@ -3,7 +3,7 @@ import React from "react";
 import './Nav.css'
 import titleImage from "./WebLogo.png";
 export default function TopSection({ toggleSections, toggleHomeSearchSections, toggleCartSection }) {
-    const handleSearchButtonClick = () => {
+    const handleSearchButtonClick = ()=> {
         toggleSections(true); // Show both search and product sections
     };
 

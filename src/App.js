@@ -30,7 +30,7 @@
         const [showCartSection, setCartSection] = useState(false);
 
 
-        const toggleSearchSections = (show) => {
+        const toggleSearchSections = (show)=> {
             setSearchSection(show);
             setProductSection(show);
             setProductDescriptionSection(!show);

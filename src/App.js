@@ -52,7 +52,7 @@
             setHomeSection(!show);
             setCartSection(!show);
         };
-        const toggleCartSection = (show) => {
+        const toggleCartSection = (show) =>{
             setCartSection(show);
             setProductDescriptionSection(!show);
             setSearchSection(!show);

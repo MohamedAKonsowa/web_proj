@@ -9,7 +9,7 @@
     import ProductDescriptionSection from "./ProductDescriptionSection";
 
     function App() {
-        const productsData = [
+        const initialProductsData  = [
             { id: 0, imageSrc: downloadImage, productName: 'Product 1' , description: 'description', quantity: 0, price:700, category:"Hoodie"},
             { id: 1, imageSrc: downloadImage, productName: 'Product 2' , description: 'description', quantity: 0, price:700, category:"Hoodie"},
             { id: 2, imageSrc: downloadImage2, productName: 'Product 3' , description: 'description', quantity: 0, price:700, category:"Hoodie"},
@@ -20,6 +20,7 @@
             { id: 7, imageSrc: downloadImage, productName: 'Product 8' , description: 'description', quantity: 0, price:700, category:"Hoodie"},
             { id: 8, imageSrc: downloadImage, productName: 'Product 9' , description: 'description', quantity: 0, price:700, category:"Hoodie"},
         ];
+        const [productsData, setProductsData] = useState(initialProductsData);
         const [orders, setOrders] = useState([]);
         const [clickedItem, setClickedItem] = useState([]);
         const [selectedItems, setSelectedItems] = useState([]);
@@ -65,7 +66,6 @@
                     <TopSection toggleSections={toggleSearchSections} toggleHomeSearchSections={toggleHomeSearchSections} toggleCartSection={toggleCartSection} />
                 </div>
                 <div className={"test1"}>
-
                     <div>
                         <SearchPage showSearchSection={showSearchSection} showProductSection={showProductSection}
                                     productsData={productsData}

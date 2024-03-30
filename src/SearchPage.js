@@ -19,7 +19,7 @@ const SearchPage = ({
         return typeMatch && priceMatch;
     });
     return (
-        <div className="mainsearch-container">
+        <div className="mainSearch-container">
             {showSearchSection && <SearchSection className={"search-search-screen"} setSelectedTypes={setSelectedTypes} setSelectedPrice={setSelectedPrice}/>}
             {showProductSection && (
                 <div className={"product-search-screen"}>

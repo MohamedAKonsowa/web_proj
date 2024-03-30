@@ -7,6 +7,8 @@
     import SearchPage from "./SearchPage";
     import Cart from "./Cart";
     import ProductDescriptionSection from "./ProductDescriptionSection";
+    import Login from "./Login";
+    import Register from "./Register";
 
     function App() {
         const productsData  = [
@@ -29,6 +31,21 @@
         const [showProductDescriptionSection, setProductDescriptionSection] = useState(false);
         const [showCartSection, setCartSection] = useState(false);
         const [showContactSection, setContactSection] = useState(false);
+        const [showLogin , setLogin] = useState(false);
+        const [currentPage, setCurrentPage] = useState("login");
+
+        const handleFormSwitch = (page) => {
+            setCurrentPage(page);
+        };
+        const toggleLogin =(show) => {
+            setCartSection(!show);
+            setProductDescriptionSection(!show);
+            setSearchSection(!show);
+            setProductSection(!show);
+            setHomeSection(!show);
+            setLogin(show);
+            setContactSection(!show);
+        }
 
 
         const toggleSearchSections = (show)=> {
@@ -37,7 +54,8 @@
             setProductDescriptionSection(!show);
             setCartSection(!show);
             setHomeSection(!show);
-            setContactSection(!show)
+            setContactSection(!show);
+            setLogin(!show);
         };
         const toggleHomeSearchSections = (show) => {
             setSearchSection(!show);
@@ -45,7 +63,8 @@
             setHomeSection(show);
             setProductDescriptionSection(!show);
             setCartSection(!show);
-            setContactSection(!show)
+            setContactSection(!show);
+            setLogin(!show);
         };
         const toggleProductDescriptionSection = (show) => {
             setProductDescriptionSection(show);
@@ -53,7 +72,8 @@
             setProductSection(!show);
             setHomeSection(!show);
             setCartSection(!show);
-            setContactSection(!show)
+            setContactSection(!show);
+            setLogin(!show);
         };
         const toggleCartSection = (show) =>{
             setSearchSection(!show);
@@ -61,7 +81,8 @@
             setHomeSection(!show);
             setProductDescriptionSection(!show);
             setCartSection(show);
-            setContactSection(!show)
+            setContactSection(!show);
+            setLogin(!show);
         };
         const toggleContactSection = (show) =>{
             setCartSection(!show);
@@ -69,13 +90,14 @@
             setSearchSection(!show);
             setProductSection(!show);
             setHomeSection(!show);
-            setContactSection(show)
+            setLogin(!show);
+            setContactSection(show);
         };
 
         return (
             <>
                 <div>
-                    <TopSection toggleSections={toggleSearchSections} toggleHomeSearchSections={toggleHomeSearchSections} toggleCartSection={toggleCartSection}  toggleContactSection={toggleContactSection}/>
+                    <TopSection toggleSections={toggleSearchSections} toggleHomeSearchSections={toggleHomeSearchSections} toggleCartSection={toggleCartSection}  toggleContactSection={toggleContactSection} toggleLogin={toggleLogin}/>
                 </div>
                 <div className={"test1"}>
                     <div>
@@ -104,6 +126,15 @@
                     <div>
                         {showContactSection && (
                             <ContactSection></ContactSection>)}
+                    </div>
+                    <div>
+                        {showLogin && (
+                            currentPage === 'login' ? (
+                                <Login onFromSwitch={() => handleFormSwitch('register')}/>
+                            ) : (
+                                <Register onFromSwitch={() => handleFormSwitch('login')}/>
+                            )
+                        )}
                     </div>
                 </div>
             </>

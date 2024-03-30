@@ -18,10 +18,9 @@ const SearchPage = ({
         const priceMatch = product.price <= selectedPrice;
         return typeMatch && priceMatch;
     });
-    console.log(selectedTypes)
     return (
         <div className="mainsearch-container">
-            {showSearchSection && <SearchSection setSelectedTypes={setSelectedTypes} setSelectedPrice={setSelectedPrice}/>}
+            {showSearchSection && <SearchSection className={"search-search-screen"} setSelectedTypes={setSelectedTypes} setSelectedPrice={setSelectedPrice}/>}
             {showProductSection && (
                 <div className={"product-search-screen"}>
                 <ProductHolder products={filteredProducts} toggleSections={toggleProductDescriptionSection} setClickedItem={setClickedItem}></ProductHolder>

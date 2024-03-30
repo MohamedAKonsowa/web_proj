@@ -20,8 +20,10 @@ function ClothesFilter({ types, handleTypeChange }) {
         <div>
             <b>Clothes Types:</b>
             {types.map(type => (
-                <div key={type}>
+                <div key={type} className={"cloths_filter_items"}>
+                    <label className={"filter_label"} htmlFor={type}>{type}</label>
                     <input
+                        className={"filter_checkbox"}
                         type="checkbox"
                         id={type}
                         name={type}
@@ -29,7 +31,6 @@ function ClothesFilter({ types, handleTypeChange }) {
                         checked={selectedTypes.includes(type)}
                         onChange={handleCheckboxChange}
                     />
-                    <label htmlFor={type}>{type}</label>
                 </div>
             ))}
         </div>

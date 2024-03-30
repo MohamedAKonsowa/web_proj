@@ -1,15 +1,28 @@
-.product-search-screen{
-
-}
-
-.search-side{
-    width: 25%;
-}
-
-
 .mainsearch-container{
     width: 80%;
-    margin: 30px auto;
+    margin: 7% auto 30px;
     display: flex;
+}
+
+.product-search-screen{
+    margin-left: 15%;
+    width: 100%;
+}
+
+.cloths_filter_items{
+    display: flex;
+}
+.filter_label{
+    width: 100%;
+}
+.filter_checkbox {
+}
+.search-side{
+    width: 15%;
+    position: fixed;
+}
+
+.search-search-screen{
 
 }
+

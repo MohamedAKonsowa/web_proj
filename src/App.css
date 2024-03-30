@@ -13,6 +13,7 @@
 }
 .Bar {
     width: 98%;
+    height: 80%;
 }
 .product-holder {
     display: grid;

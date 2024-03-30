@@ -1,6 +1,6 @@
 .mainSearch-container{
     width: 80%;
-    margin: 7% auto;
+    margin: auto auto;
     display: flex;
 }
 
@@ -20,6 +20,7 @@
 .search-side{
     width: 15%;
     position: fixed;
+    margin-top: 2%;
 }
 
 .search-search-screen{

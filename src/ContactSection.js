@@ -7,7 +7,7 @@ const ContactSection = ({  toggleSections}) => {
 
         <div className="contactcon">
             <h1>Contact Us</h1>
-            <form action="submit.php" method="post"><label htmlFor="name">Name:</label>
+            <form><label htmlFor="name">Name:</label>
                 <input type="text" id="name" name="name" placeholder="Your Name"/>
 
                 <label htmlFor="email">Email:</label>

@@ -29,7 +29,6 @@ export default function TopSection({ toggleSections, toggleHomeSearchSections, t
 
             </div>
             <ul className={"nav-display-flex align-center justify-content"}>
-                <li><a href={"#"} onClick={handleHomeButtonClick}>Home</a></li>
                 <li><a href={"#"} onClick={handleSearchButtonClick}>Search</a></li>
                 <li><a href={"#"} onClick={handleCartButtonClick}>Cart</a></li>
                 <li><a href={"#"} onClick={handlecontactusButtonClick}>Contact us</a></li>

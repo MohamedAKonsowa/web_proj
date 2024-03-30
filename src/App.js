@@ -29,7 +29,7 @@
         const [showHomeSection, setHomeSection] = useState(true);
         const [showProductDescriptionSection, setProductDescriptionSection] = useState(false);
         const [showCartSection, setCartSection] = useState(false);
-        const [showcontactsection, setcontactSection] = useState(true);
+        const [showContactSection, setContactSection] = useState(false);
 
 
         const toggleSearchSections = (show)=> {
@@ -38,7 +38,7 @@
             setProductDescriptionSection(!show);
             setCartSection(!show);
             setHomeSection(!show);
-            setcontactSection(!show)
+            setContactSection(!show)
         };
         const toggleHomeSearchSections = (show) => {
             setSearchSection(!show);
@@ -46,7 +46,7 @@
             setHomeSection(show);
             setProductDescriptionSection(!show);
             setCartSection(!show);
-            setcontactSection(!show)
+            setContactSection(!show)
         };
         const toggleProductDescriptionSection = (show) => {
             setProductDescriptionSection(show);
@@ -54,7 +54,7 @@
             setProductSection(!show);
             setHomeSection(!show);
             setCartSection(!show);
-            setcontactSection(!show)
+            setContactSection(!show)
         };
         const toggleCartSection = (show) =>{
             setSearchSection(!show);
@@ -62,21 +62,21 @@
             setHomeSection(!show);
             setProductDescriptionSection(!show);
             setCartSection(show);
-            setcontactSection(!show)
+            setContactSection(!show)
         };
-        const togglecontactSection = (show) =>{
+        const toggleContactSection = (show) =>{
             setCartSection(!show);
             setProductDescriptionSection(!show);
             setSearchSection(!show);
             setProductSection(!show);
             setHomeSection(!show);
-            setcontactSection(show)
+            setContactSection(show)
         };
 
         return (
             <>
                 <div>
-                    <TopSection toggleSections={toggleSearchSections} toggleHomeSearchSections={toggleHomeSearchSections} toggleCartSection={toggleCartSection}  togglecontactSection={togglecontactSection}/>
+                    <TopSection toggleSections={toggleSearchSections} toggleHomeSearchSections={toggleHomeSearchSections} toggleCartSection={toggleCartSection}  togglecontactSection={toggleContactSection}/>
                 </div>
                 <div className={"test1"}>
                     <div>
@@ -103,8 +103,8 @@
                                   orders={orders}></Cart>)}
                     </div>
                     <div>
-                        {showcontactsection && (
-                            <ContactSection toggleSections={togglecontactSection}></ContactSection>)}
+                        {showContactSection && (
+                            <ContactSection toggleSections={toggleContactSection}></ContactSection>)}
                     </div>
                 </div>
             </>

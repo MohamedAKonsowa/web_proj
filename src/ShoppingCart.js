@@ -57,7 +57,7 @@ const ShoppingCart = ({ productsData, setClickedItem }) => {
                                     </div>
                                     <div className="quantity-controls">
                                         <button onClick={() => increaseQuantity(index)}>+</button>
-                                        <button id={"decbutton"} onClick={() => removeFromCart(index)}>-</button>
+                                        <button id={"decButton"} onClick={() => removeFromCart(index)}>-</button>
                                         <p>Price {item.price * item.quantity}</p>
                                     </div>
                                 </li>

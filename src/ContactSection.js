@@ -1,11 +1,11 @@
 
 import React from "react";
 import './Contactsection.css'
-const ContactSection = ({  toggleSections}) => {
+const ContactSection = () => {
     return (
 
 
-        <div className="contactcon">
+        <div className="contactCon">
             <h1>Contact Us</h1>
             <form><label htmlFor="name">Name:</label>
                 <input type="text" id="name" name="name" placeholder="Your Name"/>
@@ -19,7 +19,7 @@ const ContactSection = ({  toggleSections}) => {
                 <label htmlFor="message">Message:</label>
                 <textarea id="message" name="message" placeholder="Write your message here"></textarea>
 
-                <button className={"conatctbutton"} type="submit">Send Message</button>
+                <button className={"contactButton"} type="submit">Send Message</button>
             </form>
 
         </div>

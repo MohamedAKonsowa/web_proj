@@ -1,6 +1,5 @@
 import React from 'react';
 import ProductHolder from './ProductHolder';
-import Product from './Product';
 import './producthome.css'
 
 const HomePage = ({ productsData, toggleSections, setClickedItem}) => {

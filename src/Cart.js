@@ -40,16 +40,16 @@ const Cart = ({ productsData, setClickedItem, setOrders, orders}) => {
             <div className="item" id="shippingDiv">
                 <div className="shipping">
                     <h2>Shipping Information</h2>
-                    <label className={"shippinginfolabel"} htmlFor={"street"}>Street:</label>
+                    <label className={"shippingInfoLabel"} htmlFor={"street"}>Street:</label>
                     <input className={"input"} type="text" name={"street"} value={street} placeholder={"Street Name/No."} onChange={(e) => setStreet(e.target.value)}/>
 
-                    <label className={"shippinginfolabel"} htmlFor={"city"}>City:</label>
+                    <label className={"shippingInfoLabel"} htmlFor={"city"}>City:</label>
                     <input className={"input"} type="text" name={"city"} placeholder={"City Name"} value={city} onChange={(e) => setCity(e.target.value)}/>
 
-                    <label className={"shippinginfolabel"} htmlFor={"country"}>Country:</label>
+                    <label className={"shippingInfoLabel"} htmlFor={"country"}>Country:</label>
                     <input className={"input"} type="text" name={"country"} placeholder={"Country Name"} value={country} onChange={(e) => setCountry(e.target.value)}/>
 
-                    <label className={"shippinginfolabel"} htmlFor={"phoneNumber"}>Phone Number:</label>
+                    <label className={"shippingInfoLabel"} htmlFor={"phoneNumber"}>Phone Number:</label>
                     <input className={"input"}  type="text" name={"phoneNumber"} placeholder={"+20123457891"} value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)}/>
 
                     <input id={"submitButton"} type="submit" onClick={handelOrder}/>

@@ -7,7 +7,7 @@ const ProductDescriptionSection = ({product, setSelectedItems, selectedItems}) =
         }
     };
     return (
-        <div className="main-containerdes">
+        <div className="main-containerDes">
             <div className={"img-card"}>
                 <img src={product.imageSrc} alt={product.productName} className="ProductDescription-image"/>
 
@@ -17,7 +17,7 @@ const ProductDescriptionSection = ({product, setSelectedItems, selectedItems}) =
                 {product.price && <p>price: {product.price}</p>}
                 {product.category && <p>category: {product.category}</p>}
                 <p>{product.description}</p>
-                <a href={"#"} onClick={addItemToCart}>Add to cart</a>
+                <a href={"#.com"} onClick={addItemToCart}>Add to cart</a>
             </div>
         </div>
     );

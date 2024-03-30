@@ -1,4 +1,4 @@
-.contactcon {
+.contactCon {
     width: 80%;
     margin: auto;
 
@@ -32,7 +32,7 @@ textarea {
     min-height: 10rem;
 }
 
-.conatctbutton {
+.contactButton {
     background-color: teal;
     color: white;
     padding: 1rem 2rem;

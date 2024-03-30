@@ -9,7 +9,7 @@
     import ProductDescriptionSection from "./ProductDescriptionSection";
 
     function App() {
-        const initialProductsData  = [
+        const productsData  = [
             { id: 0, imageSrc: downloadImage, productName: 'Product 1' , description: 'description', quantity: 0, price:700, category:"Hoodie"},
             { id: 1, imageSrc: downloadImage, productName: 'Product 2' , description: 'description', quantity: 0, price:700, category:"Hoodie"},
             { id: 2, imageSrc: downloadImage2, productName: 'Product 3' , description: 'description', quantity: 0, price:700, category:"T-shirt"},
@@ -20,7 +20,6 @@
             { id: 7, imageSrc: downloadImage, productName: 'Product 8' , description: 'description', quantity: 0, price:700, category:"Hoodie"},
             { id: 8, imageSrc: downloadImage, productName: 'Product 9' , description: 'description', quantity: 0, price:700, category:"Hoodie"},
         ];
-        const [productsData, setProductsData] = useState(initialProductsData);
         const [orders, setOrders] = useState([]);
         const [clickedItem, setClickedItem] = useState([]);
         const [selectedItems, setSelectedItems] = useState([]);
@@ -76,7 +75,7 @@
         return (
             <>
                 <div>
-                    <TopSection toggleSections={toggleSearchSections} toggleHomeSearchSections={toggleHomeSearchSections} toggleCartSection={toggleCartSection}  togglecontactSection={toggleContactSection}/>
+                    <TopSection toggleSections={toggleSearchSections} toggleHomeSearchSections={toggleHomeSearchSections} toggleCartSection={toggleCartSection}  toggleContactSection={toggleContactSection}/>
                 </div>
                 <div className={"test1"}>
                     <div>
@@ -104,7 +103,7 @@
                     </div>
                     <div>
                         {showContactSection && (
-                            <ContactSection toggleSections={toggleContactSection}></ContactSection>)}
+                            <ContactSection></ContactSection>)}
                     </div>
                 </div>
             </>

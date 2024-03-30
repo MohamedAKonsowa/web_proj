@@ -1,9 +1,9 @@
-.main-containerdes{
+.main-containerDes{
     width: 80%;
     margin: auto;
     display: flex;
 }
-.main-containerdes img {
+.main-containerDes img {
     width: 50%;
     height: auto;
 }

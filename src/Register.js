@@ -24,10 +24,10 @@ const Register = (props) => {
                 </div>
                 <div>
                     <div>
-                        <button type="submit" className="subtn">signup</button>
+                        <button type="submit" id={"subbut"} className="subtn">Signup</button>
                     </div>
-                    <label>have an account?</label>
-                    <button className="btn"onClick={props.onFromSwitch}>login</button>
+                    <label>Have an account?</label>
+                    <button className="btn"  id={"loginbut"}  onClick={props.onFromSwitch}>Login</button>
                 </div>
 
             </form>

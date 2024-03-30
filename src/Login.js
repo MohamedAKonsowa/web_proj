@@ -25,12 +25,12 @@ const Login = (props) => {
                     <input type="password" className='input-form' id="" placeholder="**" required/>
                 </div>
                 <div>
-                    <button className="subtn" type='submit'>Login</button>
+                    <button className="subtn" id={"subbut"}   type='submit'>Login</button>
                 </div>
 
                 <div >
                     <label>Dont have an account?</label>
-                    <button className="btn"onClick={props.onFromSwitch}>Register</button>
+                    <button className="btn"  id={"loginbut"}  onClick={props.onFromSwitch}>Register</button>
                 </div>
             </form>
 

@@ -9,6 +9,9 @@
     import ProductDescriptionSection from "./ProductDescriptionSection";
     import Login from "./Login";
     import Register from "./Register";
+    import AdminAddPage from "./AdminAddPage";
+    import AdminRemovePage from "./AdminRemovePage";
+    import AdminPage from "./AdminPage";
 
     function App() {
         const productsData  = [
@@ -20,7 +23,7 @@
             { id: 5, imageSrc: downloadImage, productName: 'Product 6' , description: 'description', quantity: 0, price:700, category:"Hoodie"},
             { id: 6, imageSrc: downloadImage2, productName: 'Product 7' , description: 'description', quantity: 0, price:700, category:"T-shirt"},
             { id: 7, imageSrc: downloadImage, productName: 'Product 8' , description: 'description', quantity: 0, price:700, category:"Hoodie"},
-            { id: 8, imageSrc: downloadImage, productName: 'Product 9' , description: 'description', quantity: 0, price:700, category:"Hoodie"},
+            { id: 8, imageSrc: downloadImage, productName: 'Product 9' , description: 'description', quantity: 0, price:700, category:"Hoodie"}
         ];
         const [orders, setOrders] = useState([]);
         const [clickedItem, setClickedItem] = useState([]);
@@ -31,66 +34,54 @@
         const [showProductDescriptionSection, setProductDescriptionSection] = useState(false);
         const [showCartSection, setCartSection] = useState(false);
         const [showContactSection, setContactSection] = useState(false);
+        const [showAdmin, setShowAdmin] = useState(false);
         const [showLogin , setLogin] = useState(false);
-        const [currentPage, setCurrentPage] = useState("login");
-
-        const handleFormSwitch = (page) => {
-            setCurrentPage(page);
-        };
-        const toggleLogin =(show) => {
+        const [showRegister , setRegister] = useState(false);
+        const toggleOff = (show) => {
             setCartSection(!show);
             setProductDescriptionSection(!show);
             setSearchSection(!show);
             setProductSection(!show);
             setHomeSection(!show);
-            setLogin(show);
+            setLogin(!show);
+            setRegister(!show)
             setContactSection(!show);
+            setShowAdmin(!show);
+        }
+        const toggleLogin =(show) => {
+            toggleOff(show);
+            setLogin(show);
         }
 
+        const toggleRegister =(show) => {
+            toggleOff(show);
+            setRegister(show);
+        }
+
+        const toggleAdminPage = (show) => {
+            toggleOff(show);
+            setShowAdmin(show);
+        }
 
         const toggleSearchSections = (show)=> {
+            toggleOff(show);
             setSearchSection(show);
             setProductSection(show);
-            setProductDescriptionSection(!show);
-            setCartSection(!show);
-            setHomeSection(!show);
-            setContactSection(!show);
-            setLogin(!show);
         };
         const toggleHomeSearchSections = (show) => {
-            setSearchSection(!show);
-            setProductSection(!show);
+            toggleOff(show);
             setHomeSection(show);
-            setProductDescriptionSection(!show);
-            setCartSection(!show);
-            setContactSection(!show);
-            setLogin(!show);
         };
         const toggleProductDescriptionSection = (show) => {
+            toggleOff(show);
             setProductDescriptionSection(show);
-            setSearchSection(!show);
-            setProductSection(!show);
-            setHomeSection(!show);
-            setCartSection(!show);
-            setContactSection(!show);
-            setLogin(!show);
         };
         const toggleCartSection = (show) =>{
-            setSearchSection(!show);
-            setProductSection(!show);
-            setHomeSection(!show);
-            setProductDescriptionSection(!show);
+            toggleOff(show);
             setCartSection(show);
-            setContactSection(!show);
-            setLogin(!show);
         };
         const toggleContactSection = (show) =>{
-            setCartSection(!show);
-            setProductDescriptionSection(!show);
-            setSearchSection(!show);
-            setProductSection(!show);
-            setHomeSection(!show);
-            setLogin(!show);
+            toggleOff(show);
             setContactSection(show);
         };
 
@@ -128,13 +119,13 @@
                             <ContactSection></ContactSection>)}
                     </div>
                     <div>
-                        {showLogin && (
-                            currentPage === 'login' ? (
-                                <Login onFromSwitch={() => handleFormSwitch('register')}/>
-                            ) : (
-                                <Register onFromSwitch={() => handleFormSwitch('login')}/>
-                            )
-                        )}
+                        {showLogin && <Login toggleRegister={toggleRegister} toggleAdminPage={toggleAdminPage}/>}
+                    </div>
+                    <div>
+                        {showRegister && <Register toggleLogin={toggleLogin}/>}
+                    </div>
+                    <div>
+                        {showAdmin && (<AdminPage productsData={productsData}></AdminPage>)}
                     </div>
                 </div>
             </>

@@ -1,6 +1,6 @@
 import React,{useState} from "react";
 
-const Register = (props) => {
+const Register = ({toggleLogin}) => {
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
 
@@ -27,7 +27,7 @@ const Register = (props) => {
                         <button type="submit" id={"subbut"} className="subtn">Signup</button>
                     </div>
                     <label>Have an account?</label>
-                    <button className="btn"  id={"loginbut"}  onClick={props.onFromSwitch}>Login</button>
+                    <button className="btn"  id={"loginbut"}  onClick={toggleLogin}>Login</button>
                 </div>
 
             </form>

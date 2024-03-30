@@ -1,5 +1,5 @@
 import React from 'react';
-
+import "./shippinginfo.css"
 const Order = ({ orderData, street, city, country, phoneNumber, trackingNumber }) => {
     const totalSum = orderData.reduce((accumulator, currentItem) => {
         return accumulator + (currentItem.price * currentItem.quantity);

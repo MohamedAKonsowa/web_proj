@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ShoppingCart from "./ShoppingCart";
 import Order from "./Order";
+import "./shippinginfo.css"
 
 const Cart = ({ productsData, setClickedItem, setOrders, orders}) => {
     const [street, setStreet] = useState('');
@@ -35,22 +36,23 @@ const Cart = ({ productsData, setClickedItem, setOrders, orders}) => {
             <div className="item" id="products">
                 <ShoppingCart productsData={productsData} setClickedItem={setClickedItem}/>
             </div>
+
             <div className="item" id="shippingDiv">
                 <div className="shipping">
                     <h2>Shipping Information</h2>
-                    <p>Street:</p>
-                    <input type="text" value={street} onChange={(e) => setStreet(e.target.value)}/>
+                    <label className={"shippinginfolabel"} htmlFor={"street"}>Street:</label>
+                    <input className={"input"} type="text" name={"street"} value={street} placeholder={"Street Name/No."} onChange={(e) => setStreet(e.target.value)}/>
 
-                    <p>City:</p>
-                    <input type="text" value={city} onChange={(e) => setCity(e.target.value)}/>
+                    <label className={"shippinginfolabel"} htmlFor={"city"}>City:</label>
+                    <input className={"input"} type="text" name={"city"} placeholder={"City Name"} value={city} onChange={(e) => setCity(e.target.value)}/>
 
-                    <p>Country:</p>
-                    <input type="text" value={country} onChange={(e) => setCountry(e.target.value)}/>
+                    <label className={"shippinginfolabel"} htmlFor={"country"}>Country:</label>
+                    <input className={"input"} type="text" name={"country"} placeholder={"Country Name"} value={country} onChange={(e) => setCountry(e.target.value)}/>
 
-                    <p>Phone Number:</p>
-                    <input type="text" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)}/>
-                    <br/>
-                    <input type="submit" onClick={handelOrder}/>
+                    <label className={"shippinginfolabel"} htmlFor={"phoneNumber"}>Phone Number:</label>
+                    <input className={"input"}  type="text" name={"phoneNumber"} placeholder={"+20123457891"} value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)}/>
+
+                    <input id={"submitButton"} type="submit" onClick={handelOrder}/>
                 </div>
             </div>
             {orders.length > 0 && (

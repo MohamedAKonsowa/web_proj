@@ -2,7 +2,7 @@
 import React from "react";
 import './Nav.css'
 import titleImage from "./WebLogo.png";
-export default function TopSection({ toggleSections, toggleHomeSearchSections, toggleCartSection }) {
+export default function TopSection({ toggleSections, toggleHomeSearchSections, toggleCartSection ,togglecontactSection}) {
     const handleSearchButtonClick = ()=> {
         toggleSections(true); // Show both search and product sections
     };
@@ -12,6 +12,9 @@ export default function TopSection({ toggleSections, toggleHomeSearchSections, t
     };
     const handleCartButtonClick = () => {
         toggleCartSection(true); // Hide both search and product sections
+    };
+    const handlecontactusButtonClick = () => {
+        togglecontactSection(true);
     };
 
     return (
@@ -29,7 +32,7 @@ export default function TopSection({ toggleSections, toggleHomeSearchSections, t
                 <li><a href={"#"} onClick={handleHomeButtonClick}>Home</a></li>
                 <li><a href={"#"} onClick={handleSearchButtonClick}>Search</a></li>
                 <li><a href={"#"} onClick={handleCartButtonClick}>Cart</a></li>
-                <li><a href={"#"}>Contact us</a></li>
+                <li><a href={"#"} onClick={handlecontactusButtonClick}>Contact us</a></li>
             </ul>
         </div>
     </div>

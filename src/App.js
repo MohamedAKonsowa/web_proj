@@ -3,7 +3,7 @@
     import HomePage from './HomePage';
     import downloadImage from './hoddie.jpg';
     import downloadImage2 from './OIP.jpg';
-
+    import ContactSection from './ContactSection';
     import SearchPage from "./SearchPage";
     import Cart from "./Cart";
     import ProductDescriptionSection from "./ProductDescriptionSection";
@@ -29,6 +29,7 @@
         const [showHomeSection, setHomeSection] = useState(true);
         const [showProductDescriptionSection, setProductDescriptionSection] = useState(false);
         const [showCartSection, setCartSection] = useState(false);
+        const [showcontactsection, setcontactSection] = useState(true);
 
 
         const toggleSearchSections = (show)=> {
@@ -37,6 +38,7 @@
             setProductDescriptionSection(!show);
             setCartSection(!show);
             setHomeSection(!show);
+            setcontactSection(!show)
         };
         const toggleHomeSearchSections = (show) => {
             setSearchSection(!show);
@@ -44,6 +46,7 @@
             setHomeSection(show);
             setProductDescriptionSection(!show);
             setCartSection(!show);
+            setcontactSection(!show)
         };
         const toggleProductDescriptionSection = (show) => {
             setProductDescriptionSection(show);
@@ -51,19 +54,29 @@
             setProductSection(!show);
             setHomeSection(!show);
             setCartSection(!show);
+            setcontactSection(!show)
         };
         const toggleCartSection = (show) =>{
+            setSearchSection(!show);
+            setProductSection(!show);
+            setHomeSection(!show);
+            setProductDescriptionSection(!show);
             setCartSection(show);
+            setcontactSection(!show)
+        };
+        const togglecontactSection = (show) =>{
+            setCartSection(!show);
             setProductDescriptionSection(!show);
             setSearchSection(!show);
             setProductSection(!show);
             setHomeSection(!show);
+            setcontactSection(show)
         };
 
         return (
             <>
                 <div>
-                    <TopSection toggleSections={toggleSearchSections} toggleHomeSearchSections={toggleHomeSearchSections} toggleCartSection={toggleCartSection} />
+                    <TopSection toggleSections={toggleSearchSections} toggleHomeSearchSections={toggleHomeSearchSections} toggleCartSection={toggleCartSection}  togglecontactSection={togglecontactSection}/>
                 </div>
                 <div className={"test1"}>
                     <div>
@@ -88,6 +101,10 @@
                         {showCartSection && (
                             <Cart productsData={selectedItems} setClickedItem={setSelectedItems} setOrders={setOrders}
                                   orders={orders}></Cart>)}
+                    </div>
+                    <div>
+                        {showcontactsection && (
+                            <ContactSection toggleSections={togglecontactSection}></ContactSection>)}
                     </div>
                 </div>
             </>

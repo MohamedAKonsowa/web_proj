@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import "./cartstyle.css"
 const ShoppingCart = ({ productsData, setClickedItem }) => {
     const [cartItems, setCartItems] = useState([]);
 
@@ -39,33 +39,37 @@ const ShoppingCart = ({ productsData, setClickedItem }) => {
         return accumulator + (currentItem.price * currentItem.quantity);
     }, 0);
     return (
-        <div className="shopping-cart">
-            <h2>Order</h2>
-            <div className="items">
-                {cartItems.length === 0 ? (
-                    <p>Your cart is empty</p>
-                ) : (
-                    <ul>
-                        {cartItems.map((item, index) => (
-                            <li key={item.id} className="item_inbox">
-                                <div className="item-content">
-                                    <img src={item.imageSrc} alt={item.name} className="product-image" />
-                                    <span className="product-name">
+        <div className={"main-container"}>
+            <div className="shopping-cart">
+                <h2>Order</h2>
+                <div className="items">
+                    {cartItems.length === 0 ? (
+                        <h5>Your cart is empty</h5>
+                    ) : (
+                        <ul>
+                            {cartItems.map((item, index) => (
+                                <li key={item.id} className="item_inbox">
+                                    <div className="item-content">
+                                        <img src={item.imageSrc} alt={item.name} className="product-image"/>
+                                        <span className="product-name">
                                         {item.productName} {item.quantity > 1 ? `x${item.quantity}` : ''}
                                     </span>
-                                </div>
-                                <div className="quantity-controls">
-                                    <button onClick={() => increaseQuantity(index)}>+</button>
-                                    <button onClick={() => removeFromCart(index)}>-</button>
-                                    <p>price {item.price*item.quantity}</p>
-                                </div>
-                            </li>
-                        ))}
-                    </ul>
-                )}
-                {totalSum>0 && <p>Total Price: {totalSum}</p>}
+                                    </div>
+                                    <div className="quantity-controls">
+                                        <button onClick={() => increaseQuantity(index)}>+</button>
+                                        <button id={"decbutton"} onClick={() => removeFromCart(index)}>-</button>
+                                        <p>Price {item.price * item.quantity}</p>
+                                    </div>
+                                </li>
+                            ))}
+                        </ul>
+                    )}
+                    {totalSum > 0 && <h4>Total Price: {totalSum}</h4>}
+                </div>
             </div>
         </div>
+
+
     );
 };
 

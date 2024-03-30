@@ -17,7 +17,7 @@
 .product-holder {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 columns with equal width */
-    gap: 20px; /* Adjust gap between products */
+    gap: 40px; /* Adjust gap between products */
 }
 
 

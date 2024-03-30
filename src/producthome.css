@@ -6,12 +6,9 @@
 
 }
 .product-card{
-
     margin-left: 15%;
     margin-right: 15%;
     margin-bottom: 15%;
-
-
 }
 .product-card img{
     width: 100%;
@@ -20,7 +17,7 @@
 }
 .product-card h5{
     margin: 15px;
-    text-align: justify;
+    text-align: center;
 }
 
 .product-card a{

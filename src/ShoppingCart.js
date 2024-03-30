@@ -53,18 +53,18 @@ const ShoppingCart = ({ productsData, setClickedItem }) => {
                                         <img src={item.imageSrc} alt={item.name} className="product-image"/>
                                         <span className="product-name">
                                         {item.productName} {item.quantity > 1 ? `x${item.quantity}` : ''}
-                                    </span>
+                                        </span>
                                     </div>
                                     <div className="quantity-controls">
                                         <button onClick={() => increaseQuantity(index)}>+</button>
                                         <button id={"decButton"} onClick={() => removeFromCart(index)}>-</button>
-                                        <p>Price {item.price * item.quantity}</p>
+                                        <p>Price {item.price * item.quantity} EGP</p>
                                     </div>
                                 </li>
                             ))}
                         </ul>
                     )}
-                    {totalSum > 0 && <h4>Total Price: {totalSum}</h4>}
+                    {totalSum > 0 && <h4>Total Price: {totalSum} EGP</h4>}
                 </div>
             </div>
         </div>

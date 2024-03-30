@@ -10,8 +10,9 @@ const Product = ({ id, imageSrc, productName, description, toggleSections, setCl
 
         <div className={"product-card"} onClick={handleClick}>
             <img src={imageSrc} alt={productName}/>
-            <a href="#" >
+            <a href="#.com">
                 <h5>{productName}</h5>
+                <h5>{price} EGP</h5>
             </a>
         </div>
     );

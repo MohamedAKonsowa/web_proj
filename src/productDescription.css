@@ -14,10 +14,19 @@
 
 }
 .description-area{
-   margin-top: 3%;
+    margin-top: 3%;
     text-align: center;
-
-
+}
+.sizesButtons button {
+    font-weight: 150;
+    color: white;
+    font-size: 20px;
+    border: 2px solid ;
+    background-color: teal;
+    padding: 5%;
+    width: auto;
+    border-radius:10px ;
+    text-align: center;
 }
 .description-area a {
     text-decoration: none;

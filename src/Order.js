@@ -19,6 +19,7 @@ const Order = ({ orderData, street, city, country, phoneNumber, trackingNumber }
                         <h3>{item.productName}</h3>
                         <p>{item.description}</p>
                         <p>price: {item.quantity*item.price}</p>
+                        <p>size: {item.size}</p>
                         <p>quantity: {item.quantity}</p>
                     </div>
                 </div>

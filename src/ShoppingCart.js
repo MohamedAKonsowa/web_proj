@@ -12,7 +12,8 @@ const ShoppingCart = ({ productsData, setClickedItem }) => {
             description: product.description,
             price: product.price,
             category: product.category,
-            quantity: product.quantity
+            quantity: product.quantity,
+            size:product.size
         })));
     }, [productsData]);
 
@@ -48,11 +49,12 @@ const ShoppingCart = ({ productsData, setClickedItem }) => {
                     ) : (
                         <ul>
                             {cartItems.map((item, index) => (
-                                <li key={item.id} className="item_inbox">
+                                <li key={index} className="item_inbox">
                                     <div className="item-content">
                                         <img src={item.imageSrc} alt={item.name} className="product-image"/>
                                         <span className="product-name">
-                                        {item.productName} {item.quantity > 1 ? `x${item.quantity}` : ''}
+                                            {item.productName} {item.quantity > 1 ? `x${item.quantity}` : ''}
+                                            <p>Size: {item.size}</p>
                                         </span>
                                     </div>
                                     <div className="quantity-controls">

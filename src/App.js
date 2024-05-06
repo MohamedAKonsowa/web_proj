@@ -35,6 +35,8 @@
         const [showAdmin, setShowAdmin] = useState(false);
         const [showLogin , setLogin] = useState(false);
         const [showRegister , setRegister] = useState(false);
+        const [showLoginButtons , setLoginButtons] = useState(false);
+        const [loginName , setloginName] = useState();
         const toggleOff = (show) => {
             setCartSection(!show);
             setProductDescriptionSection(!show);
@@ -86,7 +88,9 @@
         return (
             <>
                 <div>
-                    <TopSection toggleSections={toggleSearchSections} toggleHomeSearchSections={toggleHomeSearchSections} toggleCartSection={toggleCartSection}  toggleContactSection={toggleContactSection} toggleLogin={toggleLogin}/>
+                    <TopSection toggleSections={toggleSearchSections} toggleHomeSearchSections={toggleHomeSearchSections} toggleCartSection={toggleCartSection}
+                                toggleContactSection={toggleContactSection} toggleLogin={toggleLogin} showLoginButtons={showLoginButtons}
+                                loginName={loginName} setLoginButtons={setLoginButtons}/>
                 </div>
                 <div className={"test1"}>
                     <div>
@@ -117,10 +121,10 @@
                             <ContactSection></ContactSection>)}
                     </div>
                     <div>
-                        {showLogin && <Login toggleRegister={toggleRegister} toggleAdminPage={toggleAdminPage}/>}
+                        {showLogin && <Login toggleRegister={toggleRegister} toggleAdminPage={toggleAdminPage} setLoginButtons={setLoginButtons} setloginName={setloginName}/>}
                     </div>
                     <div>
-                        {showRegister && <Register toggleLogin={toggleLogin}/>}
+                        {showRegister && <Register toggleLogin={toggleLogin} setLoginButtons={setLoginButtons} setloginName={setloginName}/>}
                     </div>
                     <div>
                         {showAdmin && (<AdminPage productsData={productsData}></AdminPage>)}

@@ -2,7 +2,7 @@ import { useState } from "react";
 import AdminAddPage from "./AdminAddPage";
 import AdminRemovePage from "./AdminRemovePage";
 
-export default function AdminPage({productsData}) {
+export default function AdminPage({productsData, setproductsData}) {
     const [currentPage, setCurrentPage] = useState("remove");
 
     const handleAddClick = () => {
@@ -20,7 +20,8 @@ export default function AdminPage({productsData}) {
                 <button onClick={handleRemoveClick}>Remove</button>
             </div>
             <div className="content">
-                {currentPage === "remove" ? <AdminRemovePage productsData={productsData} /> : <AdminAddPage />}
+                {currentPage === "remove" ? <AdminRemovePage productsData={productsData} setproductsData={setproductsData} />
+                    : <AdminAddPage productsData={productsData} setproductsData={setproductsData} />}
             </div>
         </div>
     );

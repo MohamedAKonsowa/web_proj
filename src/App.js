@@ -12,7 +12,7 @@
     import AdminPage from "./AdminPage";
 
     function App() {
-        const productsData  = [
+        const [productsData, setproductsData] = useState([
             { id: 0, imageSrc: downloadImage, productName: 'Product 1' , description: 'description', quantity: 0, price:700, category:"Hoodie", sizes: ["S", "M", "L", "XL"], size:undefined},
             { id: 1, imageSrc: downloadImage, productName: 'Product 2' , description: 'description', quantity: 0, price:700, category:"Hoodie", sizes: ["M", "L", "XL"], size:undefined},
             { id: 2, imageSrc: downloadImage2, productName: 'Product 3' , description: 'description', quantity: 0, price:700, category:"T-shirt", sizes: ["S", "M", "L"], size:undefined},
@@ -22,7 +22,7 @@
             { id: 6, imageSrc: downloadImage2, productName: 'Product 7' , description: 'description', quantity: 0, price:700, category:"T-shirt", sizes: ["S", "M", "XL"], size:undefined},
             { id: 7, imageSrc: downloadImage, productName: 'Product 8' , description: 'description', quantity: 0, price:700, category:"Hoodie", sizes: ["M", "L", "XL"], size:undefined},
             { id: 8, imageSrc: downloadImage, productName: 'Product 9' , description: 'description', quantity: 0, price:700, category:"Hoodie", sizes: ["S", "M", "L"], size:undefined}
-        ];
+    ]);
         const [orders, setOrders] = useState([]);
         const [clickedItem, setClickedItem] = useState([]);
         const [selectedItems, setSelectedItems] = useState([]);
@@ -127,7 +127,7 @@
                         {showRegister && <Register toggleLogin={toggleLogin} setLoginButtons={setLoginButtons} setloginName={setloginName}/>}
                     </div>
                     <div>
-                        {showAdmin && (<AdminPage productsData={productsData}></AdminPage>)}
+                        {showAdmin && (<AdminPage productsData={productsData} productsData={productsData} setproductsData={setproductsData}></AdminPage>)}
                     </div>
                 </div>
             </>

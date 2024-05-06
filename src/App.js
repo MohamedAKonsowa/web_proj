@@ -1,4 +1,4 @@
-    import React, { useState } from 'react';
+    import React, {useEffect, useState} from 'react';
     import TopSection from './TopSection';
     import HomePage from './HomePage';
     import downloadImage from './hoddie.jpg';
@@ -10,19 +10,54 @@
     import Login from "./Login";
     import Register from "./Register";
     import AdminPage from "./AdminPage";
+    import axios from "axios";
+    const user_URL = 'http://localhost:3030/user';
 
     function App() {
-        const [productsData, setproductsData] = useState([
-            { id: 0, imageSrc: downloadImage, productName: 'Product 1' , description: 'description', quantity: 0, price:700, category:"Hoodie", sizes: ["S", "M", "L", "XL"], size:undefined},
-            { id: 1, imageSrc: downloadImage, productName: 'Product 2' , description: 'description', quantity: 0, price:700, category:"Hoodie", sizes: ["M", "L", "XL"], size:undefined},
-            { id: 2, imageSrc: downloadImage2, productName: 'Product 3' , description: 'description', quantity: 0, price:700, category:"T-shirt", sizes: ["S", "M", "L"], size:undefined},
-            { id: 3, imageSrc: downloadImage2, productName: 'Product 4' , description: 'description', quantity: 0, price:700, category:"T-shirt", sizes: ["M", "L", "XL"], size:undefined},
-            { id: 4, imageSrc: downloadImage, productName: 'Product 5' , description: 'description', quantity: 0, price:700, category:"Hoodie", sizes: ["S", "M", "XL"], size:undefined},
-            { id: 5, imageSrc: downloadImage, productName: 'Product 6' , description: 'description', quantity: 0, price:700, category:"Hoodie", sizes: ["S", "L", "XL"], size:undefined},
-            { id: 6, imageSrc: downloadImage2, productName: 'Product 7' , description: 'description', quantity: 0, price:700, category:"T-shirt", sizes: ["S", "M", "XL"], size:undefined},
-            { id: 7, imageSrc: downloadImage, productName: 'Product 8' , description: 'description', quantity: 0, price:700, category:"Hoodie", sizes: ["M", "L", "XL"], size:undefined},
-            { id: 8, imageSrc: downloadImage, productName: 'Product 9' , description: 'description', quantity: 0, price:700, category:"Hoodie", sizes: ["S", "M", "L"], size:undefined}
-    ]);
+
+
+        const [productsData, setproductsData] = useState([]);
+
+        useEffect(() => {
+            const getAllItems = async () => {
+                try {
+                    const getItemsURL = user_URL + "/getAllItems";
+                    const response = await axios.post(getItemsURL);
+                    console.log(response.data);
+                    const arr = response.data.allItems; // Accessing the array of items
+                    if (!Array.isArray(arr)) {
+                        console.error("Array of items not found in response data");
+                        return; // Exit the function if array of items is not found
+                    }
+                    let idCounter = 0;
+                    const newProductsData = arr.map(item => ({
+                        id: idCounter++, // Use item id instead of productsData.length
+                        imageSrc: item.Image,
+                        productName: item.Name,
+                        description: item.Description,
+                        quantity: 0,
+                        price: item.Price,
+                        category: item.Category,
+                        sizes: item.Sizes.split(","),
+                        size: undefined
+                    }));
+                    setproductsData(newProductsData);
+                    console.log(productsData)
+                } catch (error) {
+                    console.error('Error:', error);
+                    // Handle other errors (e.g., network issues)
+                    // Optionally, you can display a generic error message to the user
+                }
+            };
+
+            // Call the function when the component mounts
+            getAllItems();
+        }, []);
+
+
+
+
+
         const [orders, setOrders] = useState([]);
         const [clickedItem, setClickedItem] = useState([]);
         const [selectedItems, setSelectedItems] = useState([]);
@@ -107,7 +142,7 @@
                                       setClickedItem={setClickedItem}></HomePage>)}
                     </div>
                     <div>
-                        {showProductDescriptionSection &&
+                    {showProductDescriptionSection &&
                             <ProductDescriptionSection product={clickedItem} setSelectedItems={setSelectedItems}
                                                        selectedItems={selectedItems}></ProductDescriptionSection>}
                     </div>
@@ -121,13 +156,16 @@
                             <ContactSection></ContactSection>)}
                     </div>
                     <div>
-                        {showLogin && <Login toggleRegister={toggleRegister} toggleAdminPage={toggleAdminPage} setLoginButtons={setLoginButtons} setloginName={setloginName}/>}
+                        {showLogin && <Login toggleRegister={toggleRegister} toggleAdminPage={toggleAdminPage}
+                                             setLoginButtons={setLoginButtons} setloginName={setloginName}/>}
                     </div>
                     <div>
-                        {showRegister && <Register toggleLogin={toggleLogin} setLoginButtons={setLoginButtons} setloginName={setloginName}/>}
+                        {showRegister && <Register toggleLogin={toggleLogin} setLoginButtons={setLoginButtons}
+                                                   setloginName={setloginName}/>}
                     </div>
                     <div>
-                        {showAdmin && (<AdminPage productsData={productsData} productsData={productsData} setproductsData={setproductsData}></AdminPage>)}
+                        {showAdmin && (<AdminPage productsData={productsData} productsData={productsData}
+                                                  setproductsData={setproductsData}></AdminPage>)}
                     </div>
                 </div>
             </>

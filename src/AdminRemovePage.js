@@ -1,7 +1,9 @@
 import { useState } from "react";
+import axios from "axios";
 
-export default function AdminRemovePage({ productsData }) {
+export default function AdminRemovePage({ productsData, setproductsData}) {
     const [selectedProduct, setSelectedProduct] = useState(null);
+    const admin_URL = 'http://localhost:3030/admin';
 
     const handleProductSelectChange = (event) => {
         const productId = event.target.value;
@@ -9,12 +11,26 @@ export default function AdminRemovePage({ productsData }) {
         setSelectedProduct(product);
     };
 
-    const handleRemoveButtonClick = () => {
+    const handleRemoveButtonClick = async (e) => {
+        e.preventDefault();
         if (selectedProduct) {
-            // Perform removal logic here, such as updating state or making an API call
-            console.log(`Removing product: ${selectedProduct.productName}`);
-            // Reset the selected product
-            setSelectedProduct(null);
+            const adminRemoveURL = admin_URL+'/removeItem'
+            const response = await axios.post(adminRemoveURL, {
+                name: selectedProduct.productName // Send the product name as identifier
+            });
+            console.log(response)
+            if (response.status === 200 && response.data.success) {
+
+
+                const updatedProductsData = productsData.filter(product => product.id !== selectedProduct.id);
+
+                // Update the state with the filtered array
+                setproductsData(updatedProductsData);
+
+                console.log(`Removing product: ${selectedProduct.productName}`);
+                // Reset the selected product
+                setSelectedProduct(null);
+            }
         }
     };
 

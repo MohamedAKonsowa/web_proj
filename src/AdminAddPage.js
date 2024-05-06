@@ -1,5 +1,6 @@
 import { useState } from "react";
 import './AdminPage.css';
+import axios from "axios";
 
 export default function AdminAddPage() {
     const [imageSelected, setImageSelected] = useState(false);
@@ -11,19 +12,28 @@ export default function AdminAddPage() {
         document.getElementById('fileInput').click();
     };
 
-    const handleSubmitClick = () => {
-        // Submit product details including sizes
-        const formData = new FormData();
-        formData.append('Name', document.getElementById('Name').value);
-        formData.append('Price', document.getElementById('Price').value);
-        formData.append('Description', document.getElementById('Description').value);
-        formData.append('Category', document.getElementById('Category').value);
-        formData.append('Sizes', JSON.stringify(sizes));
+    const handleSubmitClick = async () => {
+        try{
+            const formData = {
+                Name: document.getElementById('Name').value,
+                Price: parseFloat(document.getElementById('Price').value),
+                Description: document.getElementById('Description').value,
+                Category: document.getElementById('Category').value,
+                Sizes: sizes,
+                Image: imageSelected ? imageUrl : null
+            };
         // Append image file if selected
         if (imageSelected) {
             formData.append('Image', document.getElementById('fileInput').files[0]);
         }
-        // Send formData to server or perform further processing
+        await axios.post('https://localhost/submit_form', formData);
+
+            document.getElementById('adminForm').reset(); //3lshan reset el form
+
+
+        } catch (error) {
+            console.error('Error submitting form:', error);
+        }
     };
 
     const handleFileInputChange = (event) => {

@@ -22,7 +22,7 @@
             const getAllItems = async () => {
                 try {
                     const getItemsURL = user_URL + "/getAllItems";
-                    const response = await axios.post(getItemsURL);
+                    const response = await axios.get(getItemsURL);
                     console.log(response.data);
                     const arr = response.data.allItems; // Accessing the array of items
                     if (!Array.isArray(arr)) {

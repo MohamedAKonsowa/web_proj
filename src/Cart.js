@@ -1,13 +1,31 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import ShoppingCart from "./ShoppingCart";
 import Order from "./Order";
 import "./shippinginfo.css"
+import axios from "axios";
 
-const Cart = ({ productsData, setClickedItem, setOrders, orders}) => {
+const Cart = ({ productsData, setClickedItem, setOrders, orders, loginName}) => {
     const [street, setStreet] = useState('');
     const [city, setCity] = useState('');
     const [country, setCountry] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
+    const user_URL = 'http://localhost:3030/user';
+
+
+    useEffect(() => {
+        const getAllOrders = async () => {
+            try {
+                const getOrderURL = user_URL + "/getOrder";
+                const response = await axios.post(getOrderURL, loginName);
+                //use setOrders to edit the array of orders
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+
+        // Call the function when the component mounts
+        getAllOrders();
+    }, []);
 
     const generateRandomNumbers = () => {
         const numbers = [];
@@ -16,6 +34,32 @@ const Cart = ({ productsData, setClickedItem, setOrders, orders}) => {
             numbers.push(randomNumber);
         }
         return numbers;
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const newOrder = {
+                loginName: loginName,
+                street: street,
+                city: city,
+                country: country,
+                phoneNumber: phoneNumber,
+                orderData: productsData,
+                trackingNumber: generateRandomNumbers()
+            };
+            setOrders([...orders, newOrder]);
+            setClickedItem([]);
+            // Additional logic for handling the order submission
+            const orderURI = user_URL+"/order";
+            const response = await axios.post(orderURI, newOrder);
+            if (response.status === 200) alert("Order Confirmed")
+            else alert("Order Failed")
+        } catch (error) {
+            console.error('Error:', error);
+            // Handle other errors (e.g., network issues)
+            // Optionally, you can display a generic error message to the user
+        }
     };
     const handelOrder = () => {
         const newOrder = {

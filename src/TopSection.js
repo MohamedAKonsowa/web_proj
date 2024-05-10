@@ -2,7 +2,7 @@
 import React from "react";
 import './Nav.css'
 import titleImage from "./WebLogo.png";
-export default function TopSection({ toggleSections, toggleHomeSearchSections, toggleCartSection ,toggleContactSection, toggleLogin, showLoginButtons, loginName, setLoginButtons}) {
+export default function TopSection({ toggleSections, toggleHomeSearchSections, toggleCartSection ,toggleContactSection, toggleLogin, showLoginButtons, loginName, setLoginButtons, setloginName}) {
     const handleSearchButtonClick = ()=> {
         toggleSections(true); // Show both search and product sections
     };
@@ -11,7 +11,12 @@ export default function TopSection({ toggleSections, toggleHomeSearchSections, t
         toggleHomeSearchSections(true); // Hide both search and product sections
     };
     const handleCartButtonClick = () => {
-        toggleCartSection(true); // Hide both search and product sections
+        if (loginName !== undefined) {
+            toggleCartSection(true); // Hide both search and product sections
+        }
+        else {
+            toggleLogin(true);
+        }
     };
     const handleContactusButtonClick = () => {
         toggleContactSection(true);
@@ -21,6 +26,7 @@ export default function TopSection({ toggleSections, toggleHomeSearchSections, t
     }
     const handleLoginNameClick = () => {
         setLoginButtons(false); // Set showLoginButtons to false when login name is clicked
+        setloginName(undefined)
     };
 
     return (

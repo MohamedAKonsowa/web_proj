@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Form.css'
 import axios from "axios";
-const Login = ({toggleRegister, toggleAdminPage, setLoginButtons, setloginName}) => {
+const Login = ({toggleRegister, toggleAdminPage, setLoginButtons, setloginName, toggleHomeSearchSections}) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const Login_URL = 'http://localhost:3030/login';
@@ -13,7 +13,6 @@ const Login = ({toggleRegister, toggleAdminPage, setLoginButtons, setloginName})
     const handlePasswordChange = (e) => {
         setPassword(e.target.value);
     };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -31,11 +30,13 @@ const Login = ({toggleRegister, toggleAdminPage, setLoginButtons, setloginName})
                     setLoginButtons(true);
                     setloginName(username)
                     console.log("Login successful");
+                    toggleHomeSearchSections(true);
                     // Redirect or do any other actions for successful login
                 } else if (response.status === 235) {
                     // If the status code is 235, the password is wrong
                     // You can handle this case accordingly
                     console.error('Login failed:', response.data);
+                    alert("Login failed")
                     // Optionally, display an error message to the user
                 } else if (response.status === 234) {
                     // If the status code is 234, the username does not exist

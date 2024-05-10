@@ -31,7 +31,7 @@
                     }
                     let idCounter = 0;
                     const newProductsData = arr.map(item => ({
-                        id: idCounter++, // Use item id instead of productsData.length
+                        id: item._id, // Use item id instead of productsData.length
                         imageSrc: item.Image,
                         productName: item.Name,
                         description: item.Description,
@@ -149,7 +149,7 @@
                     <div>
                         {showCartSection && (
                             <Cart productsData={selectedItems} setClickedItem={setSelectedItems} setOrders={setOrders}
-                                  orders={orders} loginName={loginName}></Cart>)}
+                                  orders={orders} loginName={loginName} productsDataFull={productsData}></Cart>)}
                     </div>
                     <div>
                         {showContactSection && (

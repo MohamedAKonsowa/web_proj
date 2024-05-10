@@ -30,7 +30,6 @@ const Login = ({toggleRegister, toggleAdminPage, setLoginButtons, setloginName, 
                     setLoginButtons(true);
                     setloginName(username)
                     console.log("Login successful");
-                    toggleHomeSearchSections(true);
                     // Redirect or do any other actions for successful login
                 } else if (response.status === 235) {
                     // If the status code is 235, the password is wrong

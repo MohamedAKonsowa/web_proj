@@ -4,19 +4,57 @@ import Order from "./Order";
 import "./shippinginfo.css"
 import axios from "axios";
 
-const Cart = ({ productsData, setClickedItem, setOrders, orders, loginName}) => {
+const Cart = ({ productsData, setClickedItem, setOrders, orders, loginName, productsDataFull}) => {
     const [street, setStreet] = useState('');
     const [city, setCity] = useState('');
     const [country, setCountry] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
-    const user_URL = 'http://localhost:3030/user';
+    const user_URL = 'http://localhost:3030/order/';
 
 
     useEffect(() => {
         const getAllOrders = async () => {
             try {
-                const getOrderURL = user_URL + "/getOrder";
-                const response = await axios.post(getOrderURL, loginName);
+                setOrders([])
+                const getOrderURL = user_URL +loginName;
+                const response = await axios.get(getOrderURL, loginName);
+                console.log(response.data)
+                const newOrders = response.data.map(order => {
+                    setOrders([])
+                    return {
+                        userID: order.loginName,
+                        street: order.street,
+                        city: order.city,
+                        country: order.country,
+                        phoneNumber: order.phoneNumber,
+                        trackingNumber: order._id,
+                        orderData: order.orderData.map(item => {
+                            // Map over each item in the orderData array
+                            const product = productsDataFull.find(product => product.id === item.productId);
+                            // Find the product in productsData array based on productId
+                            console.log(productsDataFull)
+                            if (product) {
+                                console.log(product)
+                                // If the product is found, update its quantity
+                                return {
+                                    id: item.productId,
+                                    quantity: item.quantity,
+                                    imageSrc: product.imageSrc,
+                                    productName: product.Name,
+                                    description: product.description,
+                                    price: product.price,
+                                    category: product.category,
+                                    size: item.size
+                                };
+                            } else {
+                                // If the product is not found, return the item as it is
+                                return item;
+                            }
+                        })
+                    };
+                });
+                setOrders(prevOrders => [...prevOrders, ...newOrders]);
+
                 //use setOrders to edit the array of orders
             } catch (error) {
                 console.error('Error:', error);
@@ -27,33 +65,26 @@ const Cart = ({ productsData, setClickedItem, setOrders, orders, loginName}) => 
         getAllOrders();
     }, []);
 
-    const generateRandomNumbers = () => {
-        const numbers = [];
-        for (let i = 0; i < 16; i++) {
-            const randomNumber = Math.floor(Math.random() * 10); // Generate a random number between 0 and 9
-            numbers.push(randomNumber);
-        }
-        return numbers;
-    };
-
-    const handleSubmit = async (e) => {
+    const handelOrder = async (e) => {
         e.preventDefault();
         try {
             const newOrder = {
-                loginName: loginName,
+                userID: loginName,
                 street: street,
                 city: city,
                 country: country,
                 phoneNumber: phoneNumber,
-                orderData: productsData,
-                trackingNumber: generateRandomNumbers()
+                orderData: productsData
             };
-            setOrders([...orders, newOrder]);
-            setClickedItem([]);
+
             // Additional logic for handling the order submission
-            const orderURI = user_URL+"/order";
-            const response = await axios.post(orderURI, newOrder);
-            if (response.status === 200) alert("Order Confirmed")
+            const orderURI = user_URL+"/";
+            const orderData = productsData.map(item => [item.id, item.quantity, item.size]);
+            const response = await axios.post(orderURI, {loginName,orderData,city,country,street,phoneNumber});
+            if (response.status === 200) {
+                setOrders([...orders, newOrder]);
+                setClickedItem([]);
+            }
             else alert("Order Failed")
         } catch (error) {
             console.error('Error:', error);
@@ -61,19 +92,19 @@ const Cart = ({ productsData, setClickedItem, setOrders, orders, loginName}) => 
             // Optionally, you can display a generic error message to the user
         }
     };
-    const handelOrder = () => {
-        const newOrder = {
-            street: street,
-            city: city,
-            country: country,
-            phoneNumber: phoneNumber,
-            orderData: productsData,
-            trackingNumber: generateRandomNumbers()
-        };
-        setOrders([...orders, newOrder]);
-        setClickedItem([]);
-        // Additional logic for handling the order submission
-    };
+    // const handelOrder = () => {
+    //     const newOrder = {
+    //         street: street,
+    //         city: city,
+    //         country: country,
+    //         phoneNumber: phoneNumber,
+    //         orderData: productsData,
+    //         trackingNumber: generateRandomNumbers()
+    //     };
+    //     setOrders([...orders, newOrder]);
+    //     setClickedItem([]);
+    //     // Additional logic for handling the order submission
+    // };
 
     return (
         <div className="container">

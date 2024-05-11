@@ -23,10 +23,11 @@ export default function AdminAddPage({productsData, setproductsData}) {
             console.log(imageUrl)
             const addItemURL = admin_URL + "/addItem"
             const response = await axios.post(addItemURL, { name, price, description, category, sizes, imageUrl});
-            console.log(response.data);
+            console.log(response);
             if (response.status === 200 && response.data) {
                 // Update productsData state with the new item data
-                const data = { id: productsData.length, imageSrc: imageUrl, productName: name ,
+                const id = response.data.account._id
+                const data = { id: id, imageSrc: imageUrl, productName: name ,
                     description: description, quantity: 0, price:price,
                     category:category, sizes: sizes.split(","), size:undefined}
                 setproductsData(prevProductsData => [...prevProductsData, data]);

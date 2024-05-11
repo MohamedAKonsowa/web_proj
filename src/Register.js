@@ -13,7 +13,7 @@ const Register = ({ toggleLogin, setLoginButtons, setloginName }) => {
             const response = await axios.post(Signup_URL, { username, password });
             console.log(response.data);
             // Optionally, you can redirect to the login page after successful signup
-            toggleLogin();
+            toggleLogin(true);
         } catch (error) {
             console.error('Error:', error);
         }

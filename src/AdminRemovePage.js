@@ -7,7 +7,9 @@ export default function AdminRemovePage({ productsData, setproductsData}) {
 
     const handleProductSelectChange = (event) => {
         const productId = event.target.value;
-        const product = productsData.find(product => product.id === parseInt(productId));
+        const product = productsData.find(product => product.id === productId);
+        console.log(productId)
+        console.log(product)
         setSelectedProduct(product);
     };
 
